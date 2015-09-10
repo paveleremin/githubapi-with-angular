@@ -10,6 +10,10 @@ Required tools
 
 Install and launch the app
 ========
-use **npm install**  
-use **bower install**  
-use **grunt serve**
+run this commands in terminal
+```
+npm install  
+bower install  
+cp app/_configuration/env.js-sample app/_configuration/env.js  
+grunt serve
+```

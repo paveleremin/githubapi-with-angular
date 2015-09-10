@@ -37,7 +37,7 @@ module.exports = function (grunt){
             },
             less: {
                 files: ['<%= appConfig.app %>/**/*.less'],
-                tasks: ['less:server', 'autoprefixer']
+                tasks: ['less:server', 'postcss']
             },
             gruntfile: {
                 files: ['Gruntfile.js']
@@ -109,7 +109,7 @@ module.exports = function (grunt){
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= appConfig.dist %>/{,*/}*'
+                        '<%= appConfig.dist %>/**/*'
                     ]
                 }]
             },
@@ -134,19 +134,22 @@ module.exports = function (grunt){
         },
 
         // Add vendor prefixed styles
-        autoprefixer: {
+        postcss: {
             options: {
-                browsers: ['last 1 version']
+                map: true,
+                processors: [
+                    require('autoprefixer')({
+                        browsers: 'last 2 versions'
+                    })
+                ]
             },
             dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '.tmp/styles/',
-                        src: '{,*/}*.css',
-                        dest: '.tmp/styles/'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '{,*/}*.css',
+                    dest: '.tmp/styles/'
+                }]
             }
         },
 
@@ -345,7 +348,7 @@ module.exports = function (grunt){
         grunt.task.run([
             'clean:server',
             'concurrent:server',
-            'autoprefixer',
+            'postcss',
             'connect:livereload',
             'watch'
         ]);
@@ -355,7 +358,7 @@ module.exports = function (grunt){
         'clean',
         'useminPrepare',
         'concurrent:dist',
-        'autoprefixer',
+        'postcss',
         'concat',
         'ngAnnotate',
         'replace:removeMarkedStrings',
