@@ -1,0 +1,36 @@
+<h2 class="mt0">
+    Users
+</h2>
+
+<table class="table table-list">
+    <thead>
+        <tr>
+            <th colspan="2">User</th>
+            <th>Email</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in ctrl.users">
+            <td>
+                <img
+                    ng-src="{{ user.avatar_url }}"
+                    class="img50"
+                    alt=""/>
+            </td>
+            <td>
+                {{ user.login }}
+            </td>
+            <td>
+                ...
+            </td>
+            <td>
+                <a
+                    ui-sref="user-details({userLogin: user.login})"
+                    class="btn btn-xs btn-primary">
+                    Details
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

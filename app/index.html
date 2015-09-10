@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App</title>
+
+	<base href="/">
+
+	<!-- build:css(.tmp) styles/main.css -->
+	<link href="_configuration/main.less" rel="stylesheet/less" type="text/css">
+	<!-- endbuild -->
+</head>
+<body ng-app="app">
+
+    <div id="page">
+
+        <div ng-include="'header/header.html'"></div>
+
+        <div id="content">
+            <div class="container" ui-view></div>
+        </div>
+
+    </div>
+    <div ng-include="'footer/footer.html'"></div>
+
+    <!-- build:dev dev-only.file -->
+    <script src="../bower_components/less/dist/less.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- angularJS + libraries -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/script.js -->
+    <!-- configuration -->
+    <script src="_configuration/env.js"></script>
+    <script src="_configuration/configs.js"></script>
+    <script src="_configuration/resources.js"></script>
+    <script src="_configuration/app.js"></script>
+    <!-- user -->
+    <script src="user-list/user-list-controller.js"></script>
+    <script src="user-details/user-details-controller.js"></script>
+    <!-- repo -->
+    <script src="repo-details/repo-details-controller.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>
