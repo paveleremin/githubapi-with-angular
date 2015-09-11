@@ -28,7 +28,7 @@
                 delete $rootScope.repo;
 
                 user.resolve($rootScope.user);
-                user.$promise = repo.promise;
+                user.$promise = user.promise;
                 delete $rootScope.user;
             }
             else {
